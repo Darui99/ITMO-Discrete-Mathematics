@@ -1,0 +1,35 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> sd 0 <
+s 1 -> sd 1 <
+s 2 -> sd 2 <
+sd _ -> init ! <
+init _ -> sub1r 0 >
+sub1r 0 -> sub1r 0 >
+sub1r 1 -> sub1r 1 >
+sub1r ! -> sub2r ! >
+sub2r 0 -> sub2r 0 >
+sub2r 1 -> sub2r 1 >
+sub2r 2 -> sub2r 2 >
+sub2r _ -> sub2l _ <
+sub2l 0 -> sub2l 2 <
+sub2l 1 -> add2 0 <
+sub2l 2 -> add2 1 <
+sub2l ! -> clc ! >
+add2 0 -> add2 0 <
+add2 1 -> add2 1 <
+add2 2 -> add2 2 <
+add2 ! -> add1 ! <
+add1 1 -> add1 0 <
+add1 0 -> sub1r 1 >
+add1 _ -> sub1r 1 >
+clc 2 -> clc # >
+clc _ -> clc _ <
+clc # -> clc _ <
+clc ! -> fin _ <
+fin 0 -> fin 0 <
+fin 1 -> fin 1 <
+fin _ -> ac _ >

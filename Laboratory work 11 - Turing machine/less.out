@@ -1,0 +1,59 @@
+start: s
+accept: ac
+reject: rj
+blank: _
+
+s 0 -> clr1 a >
+s 1 -> clr1 b >
+clr1 0 -> clr1 0 >
+clr1 1 -> clr1 1 >
+clr1 < -> clr2 < >
+clr2 a -> clr2 a >
+clr2 b -> clr2 b >
+clr2 0 -> cll2 a <
+clr2 1 -> cll2 b <
+clr2 _ -> fll2 _ <
+cll2 a -> cll2 a <
+cll2 b -> cll2 b <
+cll2 < -> cll1 < <
+cll1 0 -> cll1 0 <
+cll1 1 -> cll1 1 <
+cll1 a -> cll a >
+cll1 b -> cll b >
+cll 0 -> clr1 a >
+cll 1 -> clr1 b >
+cll < -> flr2 < >
+fll2 a -> fll2 a <
+fll2 b -> fll2 b <
+fll2 < -> fll1 < <
+fll1 a -> fll1 a <
+fll1 b -> fll1 b <
+fll1 0 -> rj 0 ^
+fll1 1 -> fj 1 ^
+fll1 _ -> cmp _ >
+flr2 a -> flr2 a >
+flr2 b -> flr2 b >
+flr2 0 -> ac 0 ^
+flr2 1 -> ac 1 ^
+flr2 _ -> fll2 _ <
+cmp a -> bra1 # >
+cmp b -> brb1 # >
+bra1 a -> bra1 a >
+bra1 b -> bra1 b >
+bra1 < -> bra2 < >
+bra2 # -> bra2 # >
+bra2 a -> bck2 # <
+bra2 b -> ac b ^
+bra2 _ -> rj _ ^
+brb1 a -> brb1 a >
+brb1 b -> brb1 b >
+brb1 < -> brb2 < >
+brb2 # -> brb2 # >
+brb2 a -> rj a ^
+brb2 b -> bck2 # <
+brb2 _ -> rj _ ^
+bck2 # -> bck2 # <
+bck2 < -> bck1 < <
+bck1 a -> bck1 a <
+bck1 b -> bck1 b <
+bck1 # -> cmp # >

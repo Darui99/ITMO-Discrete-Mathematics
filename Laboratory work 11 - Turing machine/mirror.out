@@ -1,0 +1,25 @@
+start: s
+accept: ac
+reject: rj
+blank: _ 
+
+s 0 -> gr 0 >
+s 1 -> gr 1 >
+gr 0 -> gr 0 >
+gr 1 -> gr 1 >
+gr _ -> nt _ <
+nt _ -> ac _ >
+nt 0 -> b0 ! >
+b0 0 -> b0 0 >
+b0 1 -> b0 1 >
+b0 _ -> ret0 0 <
+ret0 0 -> ret0 0 <
+ret0 1 -> ret0 1 <
+ret0 ! -> nt 0 <
+nt 1 -> b1 ! >
+b1 0 -> b1 0 >
+b1 1 -> b1 1 >
+b1 _ -> ret1 1 <
+ret1 0 -> ret1 0 <
+ret1 1 -> ret1 1 <
+ret1 ! -> nt 1 <
